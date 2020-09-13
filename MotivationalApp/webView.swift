@@ -118,8 +118,8 @@ struct Webview : UIViewRepresentable {
         webview?.evaluateJavaScript("player.getDuration()") { result, error in
             if let result = result as? Double{
                 self.webViewModel.videoDuration = result.rounded()
-                print("inside webview")
-                print(self.webViewModel.videoDuration)
+                //print("inside webview")
+                //print(self.webViewModel.videoDuration)
             }
         }
     }
@@ -133,6 +133,20 @@ struct Webview : UIViewRepresentable {
             }
         }
        
+    }
+    
+    func getElapsedTime() {
+        webview?.evaluateJavaScript("player.getCurrentTime()") { result, error in
+            if let result = result as? Double {
+                self.webViewModel.videoElapsed = result.rounded()
+                self.webViewModel.videoElapsedRetrived = true
+                print("inside webview")
+                print(self.webViewModel.videoElapsed)
+            }
+            
+        }
+        
+        self.webViewModel.videoElapsedRetrived = false
     }
 
 }

@@ -14,6 +14,7 @@ struct ContentView: View {
     @State private var seekValue: Double = 0
     @ObservedObject var webViewModel: WebViewModel = .shared
     var webView = Webview(web: nil, videoID: "extilsa-8Ts")
+    //let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
         
@@ -48,15 +49,16 @@ struct ContentView: View {
                                 .resizable()
                                 .frame(width: 88, height: 88)
                                 .shadow(color: Color.black.opacity(0.15), radius: 10, x: 4, y: 5)
-                                
                         })
                         
                         Spacer()
                         
                         Button(action: {
-                            //webView.getVideoDuration()
-                            print("inside content view")
-                            print(webViewModel.videoDuration)
+                            webView.getElapsedTime()
+                            if webViewModel.videoElapsedRetrived {
+                                print("inside contentView")
+                                print(webViewModel.videoElapsed)
+                            }
                         }, label: {
                             Image("skipNextIcon")
                                 .resizable()
@@ -67,19 +69,27 @@ struct ContentView: View {
                         
                     }
                     
-                    Slider(value: $seekValue, in: 0...webViewModel.videoDuration, step: 1, onEditingChanged: { _ in
-                        print(seekValue)
-                        webView.seekVideo(Seconds: seekValue)
-                
+                    Slider(value: $seekValue, in: 0...webViewModel.videoDuration, step: 1, onEditingChanged: { edited in
+                        // i want to only seek video when the user has stopped dragging the slider
+                        // that happens when onEditingChanged is false
+                        if !edited {
+                            webView.seekVideo(Seconds: seekValue)
+                        }
                     })
-                        .accentColor(Color(UIColor.systemIndigo))
+                    .accentColor(Color(UIColor.systemIndigo))
                  
                    
                 }
                 .background(Color.black.opacity(0.25))
                 .onAppear{
                     webView.getVideoDuration()
+                    //webView.getElapsedTime()
+                    
                 }
+                /*
+                .onReceive(timer) { _ in
+                    webView.getElapsedTime()
+                }*/
             }
         }
     }
