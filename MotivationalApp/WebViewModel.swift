@@ -14,9 +14,8 @@ class WebViewModel: ObservableObject {
     static let shared = WebViewModel()
     
     @Published var didFinishLoading: Bool = false
-    @Published var videoDuration: Double = 1.0
-    @Published var videoElapsed: Double = 0.0
-    @Published var videoElapsedRetrived: Bool = false 
+    @Published var durationOfVideo: Double = 1.0
+    @Published var elapsedVideoTime: Double = 0.0
     
     
 }
