@@ -49,6 +49,7 @@ struct Webview : UIViewRepresentable {
                         modestbranding: 1,
                         playsinline: 1,
                         enablejsapi: 1,
+                        playlist: 'EQIh607kd0Y, A5kGigZHed4'
                     },
                      events: {
                        'onReady': onPlayerReady
@@ -129,5 +130,20 @@ struct Webview : UIViewRepresentable {
             
         }
     }
-
+    
+    func playNextVideo() {
+        webview?.evaluateJavaScript("player.nextVideo()")
+    }
+    
+    func playPreviousVideo() {
+        webview?.evaluateJavaScript("player.previousVideo()")
+    }
+    
+    func getPlayerState() {
+        webview?.evaluateJavaScript("player.getPlayerState()") { result, error in
+            if let result = result as? Int {
+                self.webViewModel.videoPlayerState = result
+            }
+        }
+    }
 }

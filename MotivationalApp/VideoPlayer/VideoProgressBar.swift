@@ -26,7 +26,6 @@ struct VideoProgressBar: View {
                 // to our seekValue where we seek into the video is also
                 // how far the video has been elapsed
                 webViewModel.elapsedVideoTime = seekValue
-                
             }
         })
         .accentColor(Color(UIColor.systemIndigo))

@@ -16,6 +16,7 @@ struct VideoPlayerControlls: View {
             
             Button(action: {
                 print("previous")
+                webView.playPreviousVideo()
             }, label: {
                 Image("skipPreviousIcon")
                     .sizeShadowModifier(size: 44)
@@ -36,6 +37,8 @@ struct VideoPlayerControlls: View {
             
             Button(action: {
                 print("Next")
+                webView.playNextVideo()
+                
             }, label: {
                 Image("skipNextIcon")
                     .sizeShadowModifier(size: 44)
