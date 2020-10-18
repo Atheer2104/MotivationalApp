@@ -9,8 +9,8 @@ import SwiftUI
 
 struct CategoryViewSection: View {
     let header: String
-    let categoryTitleName: String
-    let categoryImageName: String
+    let data: [hardcodedCategoryViewData]
+    @EnvironmentObject var categoryViewSettings: CategoryViewSettings
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -24,11 +24,12 @@ struct CategoryViewSection: View {
                 VStack {
                     
                     HStack() {
-                        ForEach(0..<5) {_ in
+                        ForEach(0..<data.count/2) { index in
                             Button(action: {
-                                print("clicked")
+                                categoryViewSettings.isShowingCategoryView.toggle()
+                                print(data[index].videoIDs)
                             }, label: {
-                                CategoryViewCard(categoryTitleName: categoryTitleName, categoryImageName: categoryImageName)
+                                CategoryViewCard(categoryTitleName: data[index].categoryTitleName, categoryImageName: data[index].categoryImageName)
                             })
                         }
                     }
@@ -36,11 +37,12 @@ struct CategoryViewSection: View {
                     .padding(.bottom, 6)
                     
                     HStack() {
-                        ForEach(0..<5) {_ in
+                        ForEach(data.count/2..<data.count) { index in
                             Button(action: {
-                                print("clicked")
+                                categoryViewSettings.isShowingCategoryView.toggle()
+                                print(data[index].videoIDs)
                             }, label: {
-                                CategoryViewCard(categoryTitleName: categoryTitleName, categoryImageName: categoryImageName)
+                                CategoryViewCard(categoryTitleName: data[index].categoryTitleName, categoryImageName: data[index].categoryImageName)
                             })
                         }
                     }
@@ -51,9 +53,11 @@ struct CategoryViewSection: View {
         }
     }
 }
-
+/*
 struct CategoryViewSection_Previews: PreviewProvider {
     static var previews: some View {
         CategoryViewSection(header: "Productivity", categoryTitleName: "Study", categoryImageName: "categoryImagePlaceholder")
     }
-}
+
+*/
+

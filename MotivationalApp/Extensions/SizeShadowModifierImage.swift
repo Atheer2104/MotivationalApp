@@ -8,10 +8,11 @@
 import SwiftUI
 
 extension Image {
-    func sizeShadowModifier(size: CGFloat) -> some View {
+    func sizeShadowModifier(size: CGFloat, shadowRadius: CGFloat, shadowX: CGFloat, shadowY: CGFloat) -> some View {
         self
             .resizable()
             .frame(width: size, height: size)
-            .shadow(color: Color.black.opacity(0.15), radius: 10, x: 4, y: 5)
+            .shadow(color: Color.black.opacity(0.15), radius: shadowRadius, x: shadowX, y: shadowY)
+        
     }
 }

@@ -9,8 +9,15 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VideoPlayer()
-            .background(Color(.black).ignoresSafeArea())
+        ZStack(alignment: .topTrailing) {
+            VideoPlayer()
+                .background(Color(.black).ignoresSafeArea())
+        
+            VideoPlayerAdditionalControlls()
+            
+        }
+        
+        
     }
 }
 

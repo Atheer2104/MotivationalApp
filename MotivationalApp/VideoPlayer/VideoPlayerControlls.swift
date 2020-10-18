@@ -19,7 +19,7 @@ struct VideoPlayerControlls: View {
                 webView.playPreviousVideo()
             }, label: {
                 Image("skipPreviousIcon")
-                    .sizeShadowModifier(size: 44)
+                    .sizeShadowModifier(size: 44, shadowRadius: 10, shadowX: 4, shadowY: 5)
                     .padding()
             })
             
@@ -30,7 +30,7 @@ struct VideoPlayerControlls: View {
                 isPlaying.toggle()
             }, label: {
                 Image(isPlaying ? "pauseIcon" : "playArrowIcon")
-                    .sizeShadowModifier(size: 88)
+                    .sizeShadowModifier(size: 88, shadowRadius: 10, shadowX: 4, shadowY: 5)
             })
             
             Spacer()
@@ -41,7 +41,7 @@ struct VideoPlayerControlls: View {
                 
             }, label: {
                 Image("skipNextIcon")
-                    .sizeShadowModifier(size: 44)
+                    .sizeShadowModifier(size: 44, shadowRadius: 10, shadowX: 4, shadowY: 5)
                     .padding()
             })
             

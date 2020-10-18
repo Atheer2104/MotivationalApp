@@ -12,7 +12,6 @@ struct CategoryViewCard: View {
     let categoryTitleName: String
     let categoryImageName: String
     
-    
     var body: some View {
         ZStack(alignment: .topLeading) {
             Rectangle()
