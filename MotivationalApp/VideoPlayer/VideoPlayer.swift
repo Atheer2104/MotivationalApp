@@ -14,13 +14,17 @@ struct VideoPlayer: View {
     @State private var seekValue: Double = 0
     @State private var skipped: Bool = false
     @ObservedObject var webViewModel: WebViewModel = .shared
+    @EnvironmentObject var categoryViewSettings: CategoryViewSettings
     var webView = Webview(web: nil, videoID: "extilsa-8Ts")
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
         ZStack {
             webView
-                
+                .onChange(of: categoryViewSettings.categoryViewVideoIDs) { videosIDs in
+                    webView.reloadHtml(videoID: "extilsa-8Ts", playlist: videosIDs)
+                }
+            
             if webViewModel.didFinishLoading {
                 VStack{
                     Spacer()

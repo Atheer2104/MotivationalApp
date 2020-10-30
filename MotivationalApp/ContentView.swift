@@ -11,12 +11,11 @@ struct ContentView: View {
     var body: some View {
         ZStack(alignment: .topTrailing) {
             VideoPlayer()
-                .background(Color(.black).ignoresSafeArea())
-        
+                
             VideoPlayerAdditionalControlls()
             
         }
-        
+        .background(Color(.black).ignoresSafeArea())
         
     }
 }

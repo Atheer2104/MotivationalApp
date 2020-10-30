@@ -28,6 +28,7 @@ struct CategoryViewSection: View {
                             Button(action: {
                                 categoryViewSettings.isShowingCategoryView.toggle()
                                 print(data[index].videoIDs)
+                                categoryViewSettings.categoryViewVideoIDs = data[index].videoIDs
                             }, label: {
                                 CategoryViewCard(categoryTitleName: data[index].categoryTitleName, categoryImageName: data[index].categoryImageName)
                             })

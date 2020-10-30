@@ -14,58 +14,59 @@ struct Webview : UIViewRepresentable {
     @ObservedObject var webViewModel: WebViewModel = .shared
     var webview: WKWebView?
     var videoID: String
+    let hardcodedPlaylist: [String] = ["EQIh607kd0Y", "A5kGigZHed4"]
+    
+    func createEmbededHtml(videoID: String, playlist: String) -> String {
+            return """
+                <!DOCTYPE html>
+                <html>
+                <style>
+                    * { margin: 0; padding: 0; }
+                    html, body { width: 100%; height: 100%; }
+                </style>
+                 <body>
+                   <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+                   <div id="player" ></div>
 
-    var embededHtmlString: String {
-        return """
-            <!DOCTYPE html>
-            <html>
-            <style>
-                * { margin: 0; padding: 0; }
-                html, body { width: 100%; height: 100%; }
-            </style>
-             <body>
-               <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
-               <div id="player" ></div>
+                   <script>
+                     // 2. This code loads the IFrame Player API code asynchronously.
+                     var tag = document.createElement('script');
 
-               <script>
-                 // 2. This code loads the IFrame Player API code asynchronously.
-                 var tag = document.createElement('script');
+                     tag.src = "https://www.youtube.com/iframe_api";
+                     var firstScriptTag = document.getElementsByTagName('script')[0];
+                     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-                 tag.src = "https://www.youtube.com/iframe_api";
-                 var firstScriptTag = document.getElementsByTagName('script')[0];
-                 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-                 // 3. This function creates an <iframe> (and YouTube player)
-                 //    after the API code downloads.
-                 var player;
-                 function onYouTubeIframeAPIReady() {
-                   player = new YT.Player('player', {
-                     height: '100%',
-                     width: '100%',
-                     videoId: '\(videoID)',
-                     playerVars: {
-                        controls: 0,
-                        rel: 0,
-                        modestbranding: 1,
-                        playsinline: 1,
-                        enablejsapi: 1,
-                        playlist: 'EQIh607kd0Y, A5kGigZHed4'
-                    },
-                     events: {
-                       'onReady': onPlayerReady
+                     // 3. This function creates an <iframe> (and YouTube player)
+                     //    after the API code downloads.
+                     var player;
+                     function onYouTubeIframeAPIReady() {
+                       player = new YT.Player('player', {
+                         height: '100%',
+                         width: '100%',
+                         videoId: '\(videoID)',
+                         playerVars: {
+                            controls: 0,
+                            rel: 0,
+                            modestbranding: 1,
+                            playsinline: 1,
+                            enablejsapi: 1,
+                            playlist: '\(playlist)'
+                        },
+                         events: {
+                           'onReady': onPlayerReady
+                         }
+                       });
                      }
-                   });
-                 }
 
-                 // 4. The API will call this function when the video player is ready.
-                 function onPlayerReady(event) {
-                   player.playVideo();
-                 }
+                     // 4. The API will call this function when the video player is ready.
+                     function onPlayerReady(event) {
+                       player.playVideo();
+                     }
 
-               </script>
-             </body>
-            </html>
-            """
+                   </script>
+                 </body>
+                </html>
+                """
     }
     
     init(web: WKWebView?, videoID: String) {
@@ -77,6 +78,7 @@ struct Webview : UIViewRepresentable {
     }
     
     func makeUIView(context: Context) -> WKWebView {
+        let embededHtmlString = createEmbededHtml(videoID: videoID, playlist: hardcodedPlaylist.joined(separator: ", "))
         self.webview?.navigationDelegate = context.coordinator
         webview?.loadHTMLString(embededHtmlString, baseURL: nil)
         return webview!
@@ -127,7 +129,7 @@ struct Webview : UIViewRepresentable {
             if let result = result as? Double {
                 self.webViewModel.elapsedVideoTime = result.rounded()
             }
-            
+
         }
     }
     
@@ -145,5 +147,10 @@ struct Webview : UIViewRepresentable {
                 self.webViewModel.videoPlayerState = result
             }
         }
+    }
+    
+    func reloadHtml(videoID: String, playlist: [String]) {
+        let embededHtmlString = createEmbededHtml(videoID: videoID, playlist: playlist.joined(separator: ", "))
+        webview?.loadHTMLString(embededHtmlString, baseURL: nil)
     }
 }

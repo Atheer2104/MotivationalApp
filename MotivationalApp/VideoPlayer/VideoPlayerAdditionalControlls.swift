@@ -8,14 +8,12 @@
 import SwiftUI
 
 struct VideoPlayerAdditionalControlls: View {
-    //@State var isShowingCategoryView: Bool = false
     @EnvironmentObject var categoryViewSettings: CategoryViewSettings
     
     var body: some View {
         
         VStack {
             Button(action: {
-                //isShowingCategoryView.toggle()
                 categoryViewSettings.isShowingCategoryView.toggle()
             }, label: {
                 Image("category")

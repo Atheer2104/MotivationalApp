@@ -17,5 +17,11 @@ class CategoryViewSettings: ObservableObject {
         }
     }
     
+    var categoryViewVideoIDs: [String] = [""] {
+        didSet {
+            objectWillChange.send(self)
+        }
+    }
+    
     
 }
