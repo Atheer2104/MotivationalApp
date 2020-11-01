@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CategoryView: View {
-    @ObservedObject var videoIDFetcher = VideoIDFetcher()
     
     var body: some View {
         VStack {
@@ -25,12 +24,6 @@ struct CategoryView: View {
                 .padding(.bottom)
             
             Spacer()
-            
-            Button(action: {
-                videoIDFetcher.fetch()
-            }, label: {
-                Text("Fetch")
-            })
             
         }
     }

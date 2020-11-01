@@ -119,7 +119,13 @@ struct Webview : UIViewRepresentable {
     func getVideoDuration() {
         webview?.evaluateJavaScript("player.getDuration()") { result, error in
             if let result = result as? Double{
-                self.webViewModel.durationOfVideo = result.rounded()
+                // for live videos only 
+                if result == 0.0 {
+                    self.webViewModel.durationOfVideo = 1.0
+                } else {
+                    self.webViewModel.durationOfVideo = result.rounded()
+                }
+                
             }
         }
     }

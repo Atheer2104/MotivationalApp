@@ -10,7 +10,6 @@ import SwiftUI
 struct CategoryViewSection: View {
     let header: String
     let data: [hardcodedCategoryViewData]
-    @EnvironmentObject var categoryViewSettings: CategoryViewSettings
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -24,41 +23,17 @@ struct CategoryViewSection: View {
                 VStack {
                     
                     HStack() {
-                        ForEach(0..<data.count/2) { index in
-                            Button(action: {
-                                categoryViewSettings.isShowingCategoryView.toggle()
-                                print(data[index].videoIDs)
-                                categoryViewSettings.categoryViewVideoIDs = data[index].videoIDs
-                            }, label: {
-                                CategoryViewCard(categoryTitleName: data[index].categoryTitleName, categoryImageName: data[index].categoryImageName)
-                            })
-                        }
+                        CategoryViewCardList(data: data, range: 0..<data.count/2)
                     }
                     
                     .padding(.bottom, 6)
                     
                     HStack() {
-                        ForEach(data.count/2..<data.count) { index in
-                            Button(action: {
-                                categoryViewSettings.isShowingCategoryView.toggle()
-                                print(data[index].videoIDs)
-                            }, label: {
-                                CategoryViewCard(categoryTitleName: data[index].categoryTitleName, categoryImageName: data[index].categoryImageName)
-                            })
-                        }
+                        CategoryViewCardList(data: data, range: data.count/2..<data.count)
                     }
                 }
                 .padding(.leading, 8)
-            
             }
         }
     }
 }
-/*
-struct CategoryViewSection_Previews: PreviewProvider {
-    static var previews: some View {
-        CategoryViewSection(header: "Productivity", categoryTitleName: "Study", categoryImageName: "categoryImagePlaceholder")
-    }
-
-*/
-
