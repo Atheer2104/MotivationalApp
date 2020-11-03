@@ -9,19 +9,7 @@ import Foundation
 import Combine
 
 class CategoryViewSettings: ObservableObject {
-    let objectWillChange = PassthroughSubject<CategoryViewSettings, Never>()
-    
-    var isShowingCategoryView: Bool = false {
-        didSet {
-            objectWillChange.send(self)
-        }
-    }
-    
-    var categoryViewVideoIDs: [String] = [""] {
-        didSet {
-            objectWillChange.send(self)
-        }
-    }
-    
+   
+    @Published var isShowingCategoryView: Bool = false
     
 }

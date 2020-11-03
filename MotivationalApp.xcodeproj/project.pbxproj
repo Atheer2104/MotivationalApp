@@ -9,9 +9,10 @@
 /* Begin PBXBuildFile section */
 		1E296CEF253CCB83002A0C5E /* VideoPlayerAdditionalControlls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E296CEE253CCB83002A0C5E /* VideoPlayerAdditionalControlls.swift */; };
 		1E296CFA253CDFE3002A0C5E /* CategoryViewSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E296CF9253CDFE3002A0C5E /* CategoryViewSettings.swift */; };
-		1E50F6FF253B9BF700244E51 /* VideoIDFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E50F6FE253B9BF700244E51 /* VideoIDFetcher.swift */; };
 		1E50F707253B9D4400244E51 /* VideoIDModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E50F706253B9D4400244E51 /* VideoIDModel.swift */; };
+		1E56E64F254CEA3700B04773 /* VideoIDFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E56E64E254CEA3700B04773 /* VideoIDFetcher.swift */; };
 		1E89CB2925338A9F004A9110 /* CategoryViewCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E89CB2825338A9F004A9110 /* CategoryViewCard.swift */; };
+		1E9C79FF254E3DB800D3FAD9 /* CategoryViewCardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9C79FE254E3DB800D3FAD9 /* CategoryViewCardList.swift */; };
 		1E9FB36A2517D7CB002DFEB0 /* VideoPlayerControlls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9FB3692517D7CB002DFEB0 /* VideoPlayerControlls.swift */; };
 		1E9FB36F2517D8E3002DFEB0 /* VideoProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9FB36E2517D8E3002DFEB0 /* VideoProgressBar.swift */; };
 		1E9FB3742517D92F002DFEB0 /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9FB3732517D92F002DFEB0 /* VideoPlayer.swift */; };
@@ -50,9 +51,10 @@
 /* Begin PBXFileReference section */
 		1E296CEE253CCB83002A0C5E /* VideoPlayerAdditionalControlls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerAdditionalControlls.swift; sourceTree = "<group>"; };
 		1E296CF9253CDFE3002A0C5E /* CategoryViewSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewSettings.swift; sourceTree = "<group>"; };
-		1E50F6FE253B9BF700244E51 /* VideoIDFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoIDFetcher.swift; sourceTree = "<group>"; };
 		1E50F706253B9D4400244E51 /* VideoIDModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoIDModel.swift; sourceTree = "<group>"; };
+		1E56E64E254CEA3700B04773 /* VideoIDFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoIDFetcher.swift; sourceTree = "<group>"; };
 		1E89CB2825338A9F004A9110 /* CategoryViewCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewCard.swift; sourceTree = "<group>"; };
+		1E9C79FE254E3DB800D3FAD9 /* CategoryViewCardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewCardList.swift; sourceTree = "<group>"; };
 		1E9FB3692517D7CB002DFEB0 /* VideoPlayerControlls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerControlls.swift; sourceTree = "<group>"; };
 		1E9FB36E2517D8E3002DFEB0 /* VideoProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoProgressBar.swift; sourceTree = "<group>"; };
 		1E9FB3732517D92F002DFEB0 /* VideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayer.swift; sourceTree = "<group>"; };
@@ -105,7 +107,7 @@
 		1E50F6FD253B9B4D00244E51 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				1E50F6FE253B9BF700244E51 /* VideoIDFetcher.swift */,
+				1E56E64E254CEA3700B04773 /* VideoIDFetcher.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -115,6 +117,7 @@
 			children = (
 				1E89CB2825338A9F004A9110 /* CategoryViewCard.swift */,
 				1EFD52CC253396B8008AE487 /* CategoryViewSection.swift */,
+				1E9C79FE254E3DB800D3FAD9 /* CategoryViewCardList.swift */,
 				1EFD52D12533A178008AE487 /* CategoryView.swift */,
 			);
 			path = CategoryView;
@@ -353,11 +356,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1E50F6FF253B9BF700244E51 /* VideoIDFetcher.swift in Sources */,
 				1E9FB3892517DEB0002DFEB0 /* SizeShadowModifierImage.swift in Sources */,
 				1E9FB3742517D92F002DFEB0 /* VideoPlayer.swift in Sources */,
 				1EFD52D22533A178008AE487 /* CategoryView.swift in Sources */,
 				1E50F707253B9D4400244E51 /* VideoIDModel.swift in Sources */,
+				1E56E64F254CEA3700B04773 /* VideoIDFetcher.swift in Sources */,
 				1E89CB2925338A9F004A9110 /* CategoryViewCard.swift in Sources */,
 				1E296CEF253CCB83002A0C5E /* VideoPlayerAdditionalControlls.swift in Sources */,
 				1EA79A2924C0E27B00E45A86 /* AppDelegate.swift in Sources */,
@@ -368,6 +371,7 @@
 				1E9FB36A2517D7CB002DFEB0 /* VideoPlayerControlls.swift in Sources */,
 				1EA79A2B24C0E27B00E45A86 /* SceneDelegate.swift in Sources */,
 				1EA79A2D24C0E27B00E45A86 /* ContentView.swift in Sources */,
+				1E9C79FF254E3DB800D3FAD9 /* CategoryViewCardList.swift in Sources */,
 				1E296CFA253CDFE3002A0C5E /* CategoryViewSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

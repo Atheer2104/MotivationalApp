@@ -14,16 +14,20 @@ struct VideoPlayer: View {
     @State private var seekValue: Double = 0
     @State private var skipped: Bool = false
     @ObservedObject var webViewModel: WebViewModel = .shared
-    @EnvironmentObject var categoryViewSettings: CategoryViewSettings
+    @EnvironmentObject var videoIDFetcher: VideoIDFetcher
     var webView = Webview(web: nil, videoID: "extilsa-8Ts")
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
         ZStack {
             webView
-                .onChange(of: categoryViewSettings.categoryViewVideoIDs) { videosIDs in
-                    webView.reloadHtml(videoID: "extilsa-8Ts", playlist: videosIDs)
-                }
+               
+            .onChange(of: videoIDFetcher.videoIDs) { videosIDs in
+                guard let firstVideoID = videosIDs.first else { return }
+                webView.reloadHtml(videoID: firstVideoID, playlist: Array(videosIDs.dropFirst()))
+            }
+            
+        
             
             if webViewModel.didFinishLoading {
                 VStack{

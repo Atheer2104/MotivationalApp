@@ -2,7 +2,7 @@
 //  VideoIDFetcher.swift
 //  MotivationalApp
 //
-//  Created by atheer on 2020-10-17.
+//  Created by atheer on 2020-10-31.
 //
 
 import Foundation
@@ -10,18 +10,15 @@ import Combine
 
 class VideoIDFetcher: ObservableObject {
     
-    @Published var regionCode: String = ""
-    @Published var isDataReady: Bool = false
+    @Published var videoIDs: [String] = [""]
     
     private let apiKey: String = "AIzaSyBw4L0BJoyUIolpzXx9CsMp8ecIjAkjhVQ"
-    private let part: String = "id"
     private let maxResults: String = "6"
     private let searchTerm: String = "ragnar%20lothbrok%20motivation"
-    private let type: String = "video"
-    private let videoEmbeddable: String = "true"
-    
-    func fetch() {
-        guard let Url = URL(string: "https://www.googleapis.com/youtube/v3/search?part=id&maxResults=6&q=ragnar%20lothbrok%20motivation&type=video&videoEmbeddable=true&key=AIzaSyBw4L0BJoyUIolpzXx9CsMp8ecIjAkjhVQ") else { return }
+
+    func fetch(search q: String) {
+       
+        guard let Url = URL(string: "https://www.googleapis.com/youtube/v3/search?part=id&maxResults=\(maxResults)&q=\(q.replacingOccurrences(of: " ", with: "%20"))&type=video&videoEmbeddable=true&key=\(apiKey)") else { return }
         
         URLSession.shared.dataTask(with: Url) { data, response, error in
             if error != nil {
@@ -33,10 +30,10 @@ class VideoIDFetcher: ObservableObject {
                 let result = try! JSONDecoder().decode(feed.self, from: data)
                 
                 DispatchQueue.main.async {
-                    print(result.items.map({ $0.id.videoId }))
+                    self.videoIDs = result.items.map({ $0.id.videoId })
+                    
                 }
             }
         }.resume()
-        self.isDataReady = true 
     }
 }
