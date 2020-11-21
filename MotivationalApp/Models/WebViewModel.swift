@@ -17,6 +17,5 @@ class WebViewModel: ObservableObject {
     @Published var durationOfVideo: Double = 1.0
     @Published var elapsedVideoTime: Double = 0.0
     @Published var videoPlayerState: Int = -1
-    
-    
+    @Published var playlistIndex: Int = 0
 }

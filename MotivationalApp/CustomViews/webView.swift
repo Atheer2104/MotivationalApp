@@ -14,7 +14,7 @@ struct Webview : UIViewRepresentable {
     @ObservedObject var webViewModel: WebViewModel = .shared
     var webview: WKWebView?
     var videoID: String
-    let hardcodedPlaylist: [String] = ["EQIh607kd0Y", "A5kGigZHed4"]
+    let hardcodedPlaylist: [String] = ["EQIh607kd0Y", "A5kGigZHed4", "MLJyFzdQfK8", "Trfxm0TJwuQ", "nVVr7gJNny8", "XqZsoesa55w"]
     
     func createEmbededHtml(videoID: String, playlist: String) -> String {
             return """
@@ -81,6 +81,8 @@ struct Webview : UIViewRepresentable {
         let embededHtmlString = createEmbededHtml(videoID: videoID, playlist: hardcodedPlaylist.joined(separator: ", "))
         self.webview?.navigationDelegate = context.coordinator
         webview?.loadHTMLString(embededHtmlString, baseURL: nil)
+        webview?.isUserInteractionEnabled = false
+        webview?.isOpaque = false
         return webview!
     }
     
@@ -97,7 +99,9 @@ struct Webview : UIViewRepresentable {
         func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
             print("webview has loaded")
             self.webViewModel.didFinishLoading = true
+            
         }
+        
     }
     
     func makeCoordinator() -> Webview.Coordinator {
@@ -151,6 +155,15 @@ struct Webview : UIViewRepresentable {
         webview?.evaluateJavaScript("player.getPlayerState()") { result, error in
             if let result = result as? Int {
                 self.webViewModel.videoPlayerState = result
+            }
+        }
+    }
+    
+    func getPlaylistIndex() {
+        webview?.evaluateJavaScript("player.getPlaylistIndex()") { result, error in
+            if let result = result as? Int {
+                self.webViewModel.playlistIndex = result
+                
             }
         }
     }

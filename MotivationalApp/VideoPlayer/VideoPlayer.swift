@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct VideoPlayer: View {
     
@@ -18,6 +19,7 @@ struct VideoPlayer: View {
     var webView = Webview(web: nil, videoID: "extilsa-8Ts")
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
+    
     var body: some View {
         ZStack {
             webView
@@ -27,49 +29,78 @@ struct VideoPlayer: View {
                 webView.reloadHtml(videoID: firstVideoID, playlist: Array(videosIDs.dropFirst()))
             }
             
-        
+            /*.onChange(of: skipped) { hasSkipped in
+                if hasSkipped {
+                    //self.timer.upstream.connect().cancel()
+                }
+            }*/
+            
+            
+            .onReceive(webViewModel.$playlistIndex) {index in
+                if index == videoIDFetcher.maxResults {
+                    print("we should fetch next list")
+                }
+            }
+                
+            .onReceive(webViewModel.$videoPlayerState) { state in
+               
+                
+                // unstarted
+                if state == -1 {
+                    isPlaying = true
+                    seekValue = 0
+                    print("unstarted")
+                   
+                }
+                
+                //buffering
+                if state == 3 {
+                    webView.getVideoDuration()
+                    webView.getPlaylistIndex()
+                    print("buffering")
+                }
+    
+            }
+            
+            .onReceive(timer) { _ in
+                webView.getPlayerState()
+                
+                if !isSeeking && isPlaying {
+                    webView.getElapsedTime()
+                    seekValue = webViewModel.elapsedVideoTime
+                }
+
+            }
+            
             
             if webViewModel.didFinishLoading {
                 VStack{
                     Spacer()
                     
-                    VStack {
-                        VideoPlayerControlls(isPlaying: $isPlaying, webView: webView)
+                    ZStack(alignment: .bottom) {
+                       VideoPlayerCoverUpYoutubeTrademarks(height: 100)
                         
-                        VideoProgressBar(seekValue: $seekValue, isSeeking: $isSeeking, webView: webView, webViewModel: webViewModel)
-                            .padding(.horizontal)
-                            .padding(.bottom)
+                        VStack {
+                            VideoPlayerControlls(isPlaying: $isPlaying, skipped: $skipped, webView: webView)
+                            
+                            VideoProgressBar(seekValue: $seekValue, isSeeking: $isSeeking, webView: webView, webViewModel: webViewModel)
+                                .padding(.horizontal)
+                                .padding(.bottom)
+                        }
                         
                     }
                     .background(Color.black.opacity(0.25))
                     
-                    .onReceive(webViewModel.$videoPlayerState) { state in
-                        // unstarted
-                        if state == -1 {
-                            isPlaying = true
-                            seekValue = 0
-                        }
-                        
-                        //buffering
-                        if state == 3 {
-                            webView.getVideoDuration()
-                            print("buffering")
-                        }
-                    }
-                    
-                    .onReceive(timer) { _ in
-                        webView.getPlayerState()
-                        
-                        if !isSeeking && isPlaying {
-                            webView.getElapsedTime()
-                            seekValue = webViewModel.elapsedVideoTime
-                        }
-                        
-                    }
                 }
-                
             }
+            
+
+            VStack {
+                VideoPlayerCoverUpYoutubeTrademarks(height: 40)
+                
+                Spacer()
+            }
+            
         }
     }
 }
-

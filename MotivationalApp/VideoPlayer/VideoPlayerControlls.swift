@@ -9,6 +9,7 @@ import SwiftUI
 
 struct VideoPlayerControlls: View {
     @Binding var isPlaying: Bool
+    @Binding var skipped: Bool
     var webView: Webview
     
     var body: some View {
@@ -17,6 +18,7 @@ struct VideoPlayerControlls: View {
             Button(action: {
                 print("previous")
                 webView.playPreviousVideo()
+                skipped = true
             }, label: {
                 Image("skipPreviousIcon")
                     .sizeShadowModifier(size: 44, shadowRadius: 10, shadowX: 4, shadowY: 5)
@@ -38,6 +40,7 @@ struct VideoPlayerControlls: View {
             Button(action: {
                 print("Next")
                 webView.playNextVideo()
+                skipped = true
             }, label: {
                 Image("skipNextIcon")
                     .sizeShadowModifier(size: 44, shadowRadius: 10, shadowX: 4, shadowY: 5)

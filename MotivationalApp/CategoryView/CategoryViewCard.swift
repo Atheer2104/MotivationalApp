@@ -24,7 +24,7 @@ struct CategoryViewCard: View {
                 VStack {
                     Text(categoryTitleName)
                         .font(.system(size: 12, weight: .bold))
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                         .offset(x: 6, y: 5)
                     
                     Spacer()

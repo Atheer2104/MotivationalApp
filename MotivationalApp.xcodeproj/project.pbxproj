@@ -26,6 +26,7 @@
 		1EA79A3524C0E27C00E45A86 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EA79A3324C0E27C00E45A86 /* LaunchScreen.storyboard */; };
 		1EA79A4024C0E27C00E45A86 /* MotivationalAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA79A3F24C0E27C00E45A86 /* MotivationalAppTests.swift */; };
 		1EA79A4B24C0E27C00E45A86 /* MotivationalAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA79A4A24C0E27C00E45A86 /* MotivationalAppUITests.swift */; };
+		1EA8AA1625521A0A0013031E /* VideoPlayerCoverUpYoutubeTrademarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA8AA1525521A0A0013031E /* VideoPlayerCoverUpYoutubeTrademarks.swift */; };
 		1EEDB60B24EDAA02008CEB7A /* webView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEDB60A24EDAA02008CEB7A /* webView.swift */; };
 		1EFD52CD253396B8008AE487 /* CategoryViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFD52CC253396B8008AE487 /* CategoryViewSection.swift */; };
 		1EFD52D22533A178008AE487 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFD52D12533A178008AE487 /* CategoryView.swift */; };
@@ -74,6 +75,7 @@
 		1EA79A4624C0E27C00E45A86 /* MotivationalAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MotivationalAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EA79A4A24C0E27C00E45A86 /* MotivationalAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotivationalAppUITests.swift; sourceTree = "<group>"; };
 		1EA79A4C24C0E27C00E45A86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1EA8AA1525521A0A0013031E /* VideoPlayerCoverUpYoutubeTrademarks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerCoverUpYoutubeTrademarks.swift; sourceTree = "<group>"; };
 		1EEDB60A24EDAA02008CEB7A /* webView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = webView.swift; sourceTree = "<group>"; };
 		1EFD52CC253396B8008AE487 /* CategoryViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewSection.swift; sourceTree = "<group>"; };
 		1EFD52D12533A178008AE487 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				1E9FB3692517D7CB002DFEB0 /* VideoPlayerControlls.swift */,
 				1E9FB36E2517D8E3002DFEB0 /* VideoProgressBar.swift */,
 				1E296CEE253CCB83002A0C5E /* VideoPlayerAdditionalControlls.swift */,
+				1EA8AA1525521A0A0013031E /* VideoPlayerCoverUpYoutubeTrademarks.swift */,
 			);
 			path = VideoPlayer;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				1E296CEF253CCB83002A0C5E /* VideoPlayerAdditionalControlls.swift in Sources */,
 				1EA79A2924C0E27B00E45A86 /* AppDelegate.swift in Sources */,
 				1EA30FC424FC37D800B06BF0 /* WebViewModel.swift in Sources */,
+				1EA8AA1625521A0A0013031E /* VideoPlayerCoverUpYoutubeTrademarks.swift in Sources */,
 				1EEDB60B24EDAA02008CEB7A /* webView.swift in Sources */,
 				1E9FB36F2517D8E3002DFEB0 /* VideoProgressBar.swift in Sources */,
 				1EFD52CD253396B8008AE487 /* CategoryViewSection.swift in Sources */,
