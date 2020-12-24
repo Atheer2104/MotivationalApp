@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CategoryViewSection: View {
     let header: String
-    let data: [hardcodedCategoryViewData]
+    let data: [CategoryViewData]
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -21,7 +21,6 @@ struct CategoryViewSection: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 VStack {
-                    
                     HStack() {
                         CategoryViewCardList(data: data, range: 0..<data.count/2)
                     }

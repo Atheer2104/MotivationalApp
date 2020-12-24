@@ -9,16 +9,17 @@ import SwiftUI
 
 struct VideoPlayerControlls: View {
     @Binding var isPlaying: Bool
-    @Binding var skipped: Bool
+    @Binding var canSkip: Bool
+    var counter: Int
     var webView: Webview
     
     var body: some View {
-        HStack{
+        HStack {
             
             Button(action: {
-                print("previous")
-                webView.playPreviousVideo()
-                skipped = true
+                if counter != 0 || canSkip {
+                    webView.playPreviousVideo()
+                }
             }, label: {
                 Image("skipPreviousIcon")
                     .sizeShadowModifier(size: 44, shadowRadius: 10, shadowX: 4, shadowY: 5)
@@ -38,9 +39,7 @@ struct VideoPlayerControlls: View {
             Spacer()
             
             Button(action: {
-                print("Next")
                 webView.playNextVideo()
-                skipped = true
             }, label: {
                 Image("skipNextIcon")
                     .sizeShadowModifier(size: 44, shadowRadius: 10, shadowX: 4, shadowY: 5)

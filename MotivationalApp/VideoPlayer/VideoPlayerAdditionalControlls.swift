@@ -49,8 +49,3 @@ struct VideoPlayerAdditionalControlls: View {
     }
 }
 
-struct VideoPlayerAdditonalControlls_Previews: PreviewProvider {
-    static var previews: some View {
-        VideoPlayerAdditionalControlls()
-    }
-}

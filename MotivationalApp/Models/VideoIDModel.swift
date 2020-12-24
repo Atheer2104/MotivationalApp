@@ -7,8 +7,17 @@
 
 import Foundation
 
+ 
+
+struct startFeed: Codable {
+    let nextPageToken: String
+    let regionCode: String
+    let items: [items]
+}
+
 struct feed: Codable {
     let nextPageToken: String
+    let prevPageToken: String
     let regionCode: String
     let items: [items]
 }

@@ -27,6 +27,11 @@
 		1EA79A4024C0E27C00E45A86 /* MotivationalAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA79A3F24C0E27C00E45A86 /* MotivationalAppTests.swift */; };
 		1EA79A4B24C0E27C00E45A86 /* MotivationalAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA79A4A24C0E27C00E45A86 /* MotivationalAppUITests.swift */; };
 		1EA8AA1625521A0A0013031E /* VideoPlayerCoverUpYoutubeTrademarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA8AA1525521A0A0013031E /* VideoPlayerCoverUpYoutubeTrademarks.swift */; };
+		1EC35B7325923548001C57FD /* VideoIDFetcherInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC35B7225923548001C57FD /* VideoIDFetcherInfo.swift */; };
+		1EEBE8622593FD9E009D8CC6 /* CategoryViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEBE8612593FD9E009D8CC6 /* CategoryViewData.swift */; };
+		1EEBE8682593FE0E009D8CC6 /* ProductivityCategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEBE8672593FE0E009D8CC6 /* ProductivityCategoryData.swift */; };
+		1EEBE8702593FF28009D8CC6 /* HardtimesCategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEBE86F2593FF28009D8CC6 /* HardtimesCategoryData.swift */; };
+		1EEBE8782593FF5D009D8CC6 /* RelationshipsCategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEBE8772593FF5D009D8CC6 /* RelationshipsCategoryData.swift */; };
 		1EEDB60B24EDAA02008CEB7A /* webView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEDB60A24EDAA02008CEB7A /* webView.swift */; };
 		1EFD52CD253396B8008AE487 /* CategoryViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFD52CC253396B8008AE487 /* CategoryViewSection.swift */; };
 		1EFD52D22533A178008AE487 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFD52D12533A178008AE487 /* CategoryView.swift */; };
@@ -76,6 +81,12 @@
 		1EA79A4A24C0E27C00E45A86 /* MotivationalAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotivationalAppUITests.swift; sourceTree = "<group>"; };
 		1EA79A4C24C0E27C00E45A86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1EA8AA1525521A0A0013031E /* VideoPlayerCoverUpYoutubeTrademarks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerCoverUpYoutubeTrademarks.swift; sourceTree = "<group>"; };
+		1EC35B6225922F79001C57FD /* MotivationalApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MotivationalApp.entitlements; sourceTree = "<group>"; };
+		1EC35B7225923548001C57FD /* VideoIDFetcherInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoIDFetcherInfo.swift; sourceTree = "<group>"; };
+		1EEBE8612593FD9E009D8CC6 /* CategoryViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewData.swift; sourceTree = "<group>"; };
+		1EEBE8672593FE0E009D8CC6 /* ProductivityCategoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductivityCategoryData.swift; sourceTree = "<group>"; };
+		1EEBE86F2593FF28009D8CC6 /* HardtimesCategoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardtimesCategoryData.swift; sourceTree = "<group>"; };
+		1EEBE8772593FF5D009D8CC6 /* RelationshipsCategoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipsCategoryData.swift; sourceTree = "<group>"; };
 		1EEDB60A24EDAA02008CEB7A /* webView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = webView.swift; sourceTree = "<group>"; };
 		1EFD52CC253396B8008AE487 /* CategoryViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewSection.swift; sourceTree = "<group>"; };
 		1EFD52D12533A178008AE487 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
@@ -118,8 +129,8 @@
 			isa = PBXGroup;
 			children = (
 				1E89CB2825338A9F004A9110 /* CategoryViewCard.swift */,
-				1EFD52CC253396B8008AE487 /* CategoryViewSection.swift */,
 				1E9C79FE254E3DB800D3FAD9 /* CategoryViewCardList.swift */,
+				1EFD52CC253396B8008AE487 /* CategoryViewSection.swift */,
 				1EFD52D12533A178008AE487 /* CategoryView.swift */,
 			);
 			path = CategoryView;
@@ -144,9 +155,12 @@
 		1E9FB35D2517CC37002DFEB0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1EEBE8662593FDC5009D8CC6 /* CategoryDataSections */,
 				1EA30FC324FC37D800B06BF0 /* WebViewModel.swift */,
 				1E50F706253B9D4400244E51 /* VideoIDModel.swift */,
 				1E296CF9253CDFE3002A0C5E /* CategoryViewSettings.swift */,
+				1EC35B7225923548001C57FD /* VideoIDFetcherInfo.swift */,
+				1EEBE8612593FD9E009D8CC6 /* CategoryViewData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -186,6 +200,7 @@
 		1EA79A2724C0E27B00E45A86 /* MotivationalApp */ = {
 			isa = PBXGroup;
 			children = (
+				1EC35B6225922F79001C57FD /* MotivationalApp.entitlements */,
 				1EA79A2824C0E27B00E45A86 /* AppDelegate.swift */,
 				1EA79A2A24C0E27B00E45A86 /* SceneDelegate.swift */,
 				1EA79A2C24C0E27B00E45A86 /* ContentView.swift */,
@@ -227,6 +242,16 @@
 				1EA79A4C24C0E27C00E45A86 /* Info.plist */,
 			);
 			path = MotivationalAppUITests;
+			sourceTree = "<group>";
+		};
+		1EEBE8662593FDC5009D8CC6 /* CategoryDataSections */ = {
+			isa = PBXGroup;
+			children = (
+				1EEBE8672593FE0E009D8CC6 /* ProductivityCategoryData.swift */,
+				1EEBE86F2593FF28009D8CC6 /* HardtimesCategoryData.swift */,
+				1EEBE8772593FF5D009D8CC6 /* RelationshipsCategoryData.swift */,
+			);
+			path = CategoryDataSections;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -359,10 +384,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EEBE8682593FE0E009D8CC6 /* ProductivityCategoryData.swift in Sources */,
+				1EEBE8782593FF5D009D8CC6 /* RelationshipsCategoryData.swift in Sources */,
 				1E9FB3892517DEB0002DFEB0 /* SizeShadowModifierImage.swift in Sources */,
 				1E9FB3742517D92F002DFEB0 /* VideoPlayer.swift in Sources */,
 				1EFD52D22533A178008AE487 /* CategoryView.swift in Sources */,
 				1E50F707253B9D4400244E51 /* VideoIDModel.swift in Sources */,
+				1EEBE8622593FD9E009D8CC6 /* CategoryViewData.swift in Sources */,
 				1E56E64F254CEA3700B04773 /* VideoIDFetcher.swift in Sources */,
 				1E89CB2925338A9F004A9110 /* CategoryViewCard.swift in Sources */,
 				1E296CEF253CCB83002A0C5E /* VideoPlayerAdditionalControlls.swift in Sources */,
@@ -370,9 +398,11 @@
 				1EA30FC424FC37D800B06BF0 /* WebViewModel.swift in Sources */,
 				1EA8AA1625521A0A0013031E /* VideoPlayerCoverUpYoutubeTrademarks.swift in Sources */,
 				1EEDB60B24EDAA02008CEB7A /* webView.swift in Sources */,
+				1EEBE8702593FF28009D8CC6 /* HardtimesCategoryData.swift in Sources */,
 				1E9FB36F2517D8E3002DFEB0 /* VideoProgressBar.swift in Sources */,
 				1EFD52CD253396B8008AE487 /* CategoryViewSection.swift in Sources */,
 				1E9FB36A2517D7CB002DFEB0 /* VideoPlayerControlls.swift in Sources */,
+				1EC35B7325923548001C57FD /* VideoIDFetcherInfo.swift in Sources */,
 				1EA79A2B24C0E27B00E45A86 /* SceneDelegate.swift in Sources */,
 				1EA79A2D24C0E27B00E45A86 /* ContentView.swift in Sources */,
 				1E9C79FF254E3DB800D3FAD9 /* CategoryViewCardList.swift in Sources */,
@@ -544,6 +574,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MotivationalApp/MotivationalApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MotivationalApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 2R9D8RVTAY;
@@ -566,6 +597,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MotivationalApp/MotivationalApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MotivationalApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 2R9D8RVTAY;

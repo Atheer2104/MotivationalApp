@@ -19,10 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Create the SwiftUI view that provides the window contents.
         let categoryViewSettings = CategoryViewSettings()
-        let videoIDFetcher = VideoIDFetcher()
         let contentView = ContentView()
             .environmentObject(categoryViewSettings)
-            .environmentObject(videoIDFetcher)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
