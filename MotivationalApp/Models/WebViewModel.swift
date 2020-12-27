@@ -18,4 +18,6 @@ class WebViewModel: ObservableObject {
     @Published var elapsedVideoTime: Double = 0.0
     @Published var videoPlayerState: Int = -1
     @Published var playlistIndex: Int = -1
+    @Published var willPresentInterstitialAd: Bool = false
+    @Published var dismissedInterstitialAd: Bool = false
 }
