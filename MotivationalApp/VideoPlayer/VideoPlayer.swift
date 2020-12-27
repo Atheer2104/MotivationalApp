@@ -20,20 +20,28 @@ struct VideoPlayer: View {
     var webView = Webview(web: nil, videoID: "extilsa-8Ts")
     var videoIDFetcher = VideoIDFetcher()
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    
+    let randomInterstitalAds = RandomInterstitalAds()
     
     var body: some View {
         ZStack {
             webView
                
             .onChange(of: videoIDFetcherInfo.videoIDs) { videosIDs in
-                //guard let firstVideoID = videosIDs.first else { return }
-                //webView.reloadHtml(videoID: firstVideoID, playlist: Array(videosIDs.dropFirst()))
                 webView.loadPlaylist(playlist: videosIDs.joined(separator: ", "), indexToPlay: videoIDFetcherInfo.indexToPlay)
                 self.setDefaultValuesForFirstVideo = true
             }
             
+            .onReceive(webViewModel.$dismissedInterstitialAd) { boolean in
+                if boolean {
+                    webView.playVideo()
+                    webView.getPlayerState()
+                }
+            }
+                
             .onReceive(webViewModel.$playlistIndex) {index in
+                randomInterstitalAds.randomlyShowAd(currentIndex: index)
+                
+                
                 if index == videoIDFetcher.maxResults + 1 {
                     print("we should fetch next list")
                     videoIDFetcher.fetchToken(nextToken: true)
@@ -59,21 +67,27 @@ struct VideoPlayer: View {
                 // unstarted
                 if state == -1 {
                     webView.getPlaylistIndex()
+                    webView.playVideo()
                     isPlaying = true
                     seekValue = 0
                     print("unstarted")
                    
                 }
-                
                 //buffering
                 if state == 3 {
                     if webViewModel.playlistIndex > 0 {
-                    webView.getVideoDuration()
-                    webView.getPlaylistIndex()
-                    print("buffering")
+                        webView.getVideoDuration()
+                        webView.getPlaylistIndex()
+                        print("buffering")
+                        
+                        if webViewModel.willPresentInterstitialAd {
+                            webView.pauseVideo()
+                        }
+                        
                     }
                 }
                 
+                // playing
                 // mainly for when video started playing we get the playlist index
                 // so we can get videoduartion at the right time
                 // else duration will be 1.0 because when it's get called we are playing next video

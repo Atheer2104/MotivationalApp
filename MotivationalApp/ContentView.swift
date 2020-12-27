@@ -8,11 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var bannerAdmobSize: BannerAdmobSize = .shared
+    
     var body: some View {
         ZStack(alignment: .topTrailing) {
             VideoPlayer()
                 
             VideoPlayerAdditionalControlls()
+                .padding(.top, 25)
+            
+            BannerAdmob()
+                .frame(width: bannerAdmobSize.adGADSize.size.width, height: bannerAdmobSize.adGADSize.size.height, alignment: .center)
             
         }
         .background(Color(.black).ignoresSafeArea())
