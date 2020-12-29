@@ -9,12 +9,12 @@ import Foundation
 
 var ProductivityCategoryData = [
     
-    CategoryViewData(categoryTitleName: "Study", categoryImageName: "categoryImagePlaceholder", youtubeSearchTerm: "Study"),
-    CategoryViewData(categoryTitleName: "Study", categoryImageName: "categoryImagePlaceholder", youtubeSearchTerm: "Study"),
-    CategoryViewData(categoryTitleName: "Study", categoryImageName: "categoryImagePlaceholder", youtubeSearchTerm: "Study"),
-    CategoryViewData(categoryTitleName: "Study", categoryImageName: "categoryImagePlaceholder", youtubeSearchTerm: "Study"),
-    CategoryViewData(categoryTitleName: "Study", categoryImageName: "categoryImagePlaceholder", youtubeSearchTerm: "Study"),
-    CategoryViewData(categoryTitleName: "Study", categoryImageName: "categoryImagePlaceholder", youtubeSearchTerm: "Study")
+    CategoryViewData(categoryTitleName: "Study", categoryImageName: "categoryImagePlaceholder", youtubeSearchTerm: "Study Motivation"),
+    CategoryViewData(categoryTitleName: "Study", categoryImageName: "categoryImagePlaceholder", youtubeSearchTerm: "Study Motivation"),
+    CategoryViewData(categoryTitleName: "Study", categoryImageName: "categoryImagePlaceholder", youtubeSearchTerm: "Study Motivation"),
+    CategoryViewData(categoryTitleName: "Study", categoryImageName: "categoryImagePlaceholder", youtubeSearchTerm: "Study Motivation"),
+    CategoryViewData(categoryTitleName: "Study", categoryImageName: "categoryImagePlaceholder", youtubeSearchTerm: "Study Motivation"),
+    CategoryViewData(categoryTitleName: "Study", categoryImageName: "categoryImagePlaceholder", youtubeSearchTerm: "Study Motivation")
     
 ]
 

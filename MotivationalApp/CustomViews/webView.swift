@@ -172,8 +172,8 @@ struct Webview : UIViewRepresentable {
     
     func reloadHtml(videoID: String, playlist: [String]) {
         let embededHtmlString = createEmbededHtml(videoID: videoID, playlist: playlist.joined(separator: ", "))
-        print(playlist.joined(separator: ", "))
         webview?.loadHTMLString(embededHtmlString, baseURL: nil)
+        print("reloaded html")
     }
     
     func playVideoAt(index: Int) {

@@ -34,6 +34,7 @@ struct VideoPlayerControlls: View {
             }, label: {
                 Image(isPlaying ? "pauseIcon" : "playArrowIcon")
                     .sizeShadowModifier(size: 88, shadowRadius: 10, shadowX: 4, shadowY: 5)
+                    .animation(Animation.easeOut(duration: 0.5))
             })
             
             Spacer()

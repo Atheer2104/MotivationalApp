@@ -9,11 +9,11 @@ import Foundation
 
 var HardtimesCategoryData = [
     
-    CategoryViewData(categoryTitleName: "Stress", categoryImageName: "categoryImagePlaceholder2", youtubeSearchTerm: "Stress"),
-    CategoryViewData(categoryTitleName: "Stress", categoryImageName: "categoryImagePlaceholder2", youtubeSearchTerm: "Stress"),
-    CategoryViewData(categoryTitleName: "Stress", categoryImageName: "categoryImagePlaceholder2", youtubeSearchTerm: "Stress"),
-    CategoryViewData(categoryTitleName: "Stress", categoryImageName: "categoryImagePlaceholder2", youtubeSearchTerm: "Stress"),
-    CategoryViewData(categoryTitleName: "Stress", categoryImageName: "categoryImagePlaceholder2", youtubeSearchTerm: "Stress"),
-    CategoryViewData(categoryTitleName: "Stress", categoryImageName: "categoryImagePlaceholder2", youtubeSearchTerm: "Stress")
+    CategoryViewData(categoryTitleName: "Stress", categoryImageName: "categoryImagePlaceholder2", youtubeSearchTerm: "Stress Motivation"),
+    CategoryViewData(categoryTitleName: "Stress", categoryImageName: "categoryImagePlaceholder2", youtubeSearchTerm: "Stress Motivation"),
+    CategoryViewData(categoryTitleName: "Stress", categoryImageName: "categoryImagePlaceholder2", youtubeSearchTerm: "Stress Motivation"),
+    CategoryViewData(categoryTitleName: "Stress", categoryImageName: "categoryImagePlaceholder2", youtubeSearchTerm: "Stress Motivation"),
+    CategoryViewData(categoryTitleName: "Stress", categoryImageName: "categoryImagePlaceholder2", youtubeSearchTerm: "Stress Motivation"),
+    CategoryViewData(categoryTitleName: "Stress", categoryImageName: "categoryImagePlaceholder2", youtubeSearchTerm: "Stress Motivation")
 
 ]

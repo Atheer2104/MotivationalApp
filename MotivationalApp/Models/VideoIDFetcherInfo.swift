@@ -19,5 +19,6 @@ class VideoIDFetcherInfo: ObservableObject {
     @Published var nextToken: String = ""
     @Published var prevToken: String = ""
     @Published var searchTerm: String = ""
+    @Published var fetchingNewCategory: Bool = false 
     
 }

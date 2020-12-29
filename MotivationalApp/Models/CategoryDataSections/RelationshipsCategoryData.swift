@@ -9,11 +9,11 @@ import Foundation
 
 var RelationshipsCategoryData = [
     
-    CategoryViewData(categoryTitleName: "Friendship", categoryImageName: "categoryImagePlaceholder3", youtubeSearchTerm: "friendship"),
-    CategoryViewData(categoryTitleName: "Friendship", categoryImageName: "categoryImagePlaceholder3", youtubeSearchTerm: "friendship"),
-    CategoryViewData(categoryTitleName: "Friendship", categoryImageName: "categoryImagePlaceholder3", youtubeSearchTerm: "friendship"),
-    CategoryViewData(categoryTitleName: "Friendship", categoryImageName: "categoryImagePlaceholder3", youtubeSearchTerm: "friendship"),
-    CategoryViewData(categoryTitleName: "Friendship", categoryImageName: "categoryImagePlaceholder3", youtubeSearchTerm: "friendship"),
-    CategoryViewData(categoryTitleName: "Friendship", categoryImageName: "categoryImagePlaceholder3", youtubeSearchTerm: "friendship")
+    CategoryViewData(categoryTitleName: "Friendship", categoryImageName: "categoryImagePlaceholder3", youtubeSearchTerm: "Friendship Motivation"),
+    CategoryViewData(categoryTitleName: "Friendship", categoryImageName: "categoryImagePlaceholder3", youtubeSearchTerm: "Friendship Motivation"),
+    CategoryViewData(categoryTitleName: "Friendship", categoryImageName: "categoryImagePlaceholder3", youtubeSearchTerm: "Friendship Motivation"),
+    CategoryViewData(categoryTitleName: "Friendship", categoryImageName: "categoryImagePlaceholder3", youtubeSearchTerm: "Friendship Motivation"),
+    CategoryViewData(categoryTitleName: "Friendship", categoryImageName: "categoryImagePlaceholder3", youtubeSearchTerm: "Friendship Motivation"),
+    CategoryViewData(categoryTitleName: "Friendship", categoryImageName: "categoryImagePlaceholder3", youtubeSearchTerm: "Friendship Motivation")
     
 ]

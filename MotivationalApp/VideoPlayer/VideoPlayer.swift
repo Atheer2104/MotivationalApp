@@ -15,11 +15,11 @@ struct VideoPlayer: View {
     @State private var seekValue: Double = 0
     @State private var canSkip: Bool = false
     @State var setDefaultValuesForFirstVideo: Bool = true
+    @State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @ObservedObject var webViewModel: WebViewModel = .shared
     @ObservedObject var videoIDFetcherInfo: VideoIDFetcherInfo = .shared
     var webView = Webview(web: nil, videoID: "extilsa-8Ts")
     var videoIDFetcher = VideoIDFetcher()
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     let randomInterstitalAds = RandomInterstitalAds()
     
     var body: some View {
@@ -30,7 +30,16 @@ struct VideoPlayer: View {
                 webView.loadPlaylist(playlist: videosIDs.joined(separator: ", "), indexToPlay: videoIDFetcherInfo.indexToPlay)
                 self.setDefaultValuesForFirstVideo = true
             }
-            
+                
+            .onChange(of: isPlaying) { isPlaying in
+                if isPlaying {
+                    self.timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+                } else {
+                    self.timer.upstream.connect().cancel()
+                }
+            }
+                
+                
             .onReceive(webViewModel.$dismissedInterstitialAd) { boolean in
                 if boolean {
                     webView.playVideo()
@@ -50,6 +59,12 @@ struct VideoPlayer: View {
                 if index == 0 {
                     print("we should fetch previous list")
                     videoIDFetcher.fetchToken(nextToken: false)
+                    
+                    // if some hwo by mistake we are on the first video and we don't have
+                    // a prevToken then we play the first video (IllegalState)
+                    if videoIDFetcherInfo.prevToken == "" {
+                        webView.playVideoAt(index: 1)
+                    }
                     
                 }
                 
@@ -115,7 +130,7 @@ struct VideoPlayer: View {
                     
                 }
             }
-            
+                        
             if webViewModel.didFinishLoading {
                 VStack{
                     Spacer()
@@ -134,6 +149,13 @@ struct VideoPlayer: View {
                     .background(Color.black.opacity(0.25))
 
                 }
+                // animation
+                .transition(.opacity)
+            } else {
+                SpinnerProgressIndicator()
+                    .frame(width: 100, height: 100, alignment: .center)
+                    //animation 
+                    .transition(.scale)
             }
 
             VStack {

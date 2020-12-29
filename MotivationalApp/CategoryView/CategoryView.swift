@@ -10,21 +10,23 @@ import SwiftUI
 struct CategoryView: View {
     
     var body: some View {
-        VStack {
-            CategoryViewSection(header: "Productivity", data: ProductivityCategoryData)
-                .padding(.top)
-            
-            Spacer()
-            
-            CategoryViewSection(header: "Hard Times", data: HardtimesCategoryData)
-            
-            Spacer()
-            
-            CategoryViewSection(header: "Relationships", data: RelationshipsCategoryData)
-                .padding(.bottom)
-            
-            Spacer()
-            
+        ScrollView(.vertical, showsIndicators: false) {
+            VStack {
+                CategoryViewSection(header: "Productivity", data: ProductivityCategoryData)
+                    .padding(.top)
+                
+                Spacer()
+                
+                CategoryViewSection(header: "Hard Times", data: HardtimesCategoryData)
+                
+                Spacer()
+                
+                CategoryViewSection(header: "Relationships", data: RelationshipsCategoryData)
+                    .padding(.bottom)
+                
+                Spacer()
+                
+            }
         }
     }
 }

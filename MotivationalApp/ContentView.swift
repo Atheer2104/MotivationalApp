@@ -21,7 +21,7 @@ struct ContentView: View {
                 .frame(width: bannerAdmobSize.adGADSize.size.width, height: bannerAdmobSize.adGADSize.size.height, alignment: .center)
             
         }
-        .background(Color(.black).ignoresSafeArea())
+ .background(Color(.black).ignoresSafeArea())
         
     }
 }

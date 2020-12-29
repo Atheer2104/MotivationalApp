@@ -30,6 +30,7 @@
 		1EA79A4B24C0E27C00E45A86 /* MotivationalAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA79A4A24C0E27C00E45A86 /* MotivationalAppUITests.swift */; };
 		1EA8AA1625521A0A0013031E /* VideoPlayerCoverUpYoutubeTrademarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA8AA1525521A0A0013031E /* VideoPlayerCoverUpYoutubeTrademarks.swift */; };
 		1EC35B7325923548001C57FD /* VideoIDFetcherInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC35B7225923548001C57FD /* VideoIDFetcherInfo.swift */; };
+		1EC764C5259A815600802BC6 /* SpinnerProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC764C4259A815600802BC6 /* SpinnerProgressIndicator.swift */; };
 		1ED35B6425967B8600BF657C /* BannerAdmob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED35B6325967B8600BF657C /* BannerAdmob.swift */; };
 		1ED35B692596A09100BF657C /* BannerAdmobSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED35B682596A09100BF657C /* BannerAdmobSize.swift */; };
 		1EEBE8622593FD9E009D8CC6 /* CategoryViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEBE8612593FD9E009D8CC6 /* CategoryViewData.swift */; };
@@ -94,6 +95,7 @@
 		1EA8AA1525521A0A0013031E /* VideoPlayerCoverUpYoutubeTrademarks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerCoverUpYoutubeTrademarks.swift; sourceTree = "<group>"; };
 		1EC35B6225922F79001C57FD /* MotivationalApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MotivationalApp.entitlements; sourceTree = "<group>"; };
 		1EC35B7225923548001C57FD /* VideoIDFetcherInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoIDFetcherInfo.swift; sourceTree = "<group>"; };
+		1EC764C4259A815600802BC6 /* SpinnerProgressIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerProgressIndicator.swift; sourceTree = "<group>"; };
 		1ED35B6325967B8600BF657C /* BannerAdmob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerAdmob.swift; sourceTree = "<group>"; };
 		1ED35B682596A09100BF657C /* BannerAdmobSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerAdmobSize.swift; sourceTree = "<group>"; };
 		1EEBE8612593FD9E009D8CC6 /* CategoryViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewData.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				1EEDB60A24EDAA02008CEB7A /* webView.swift */,
 				1ED35B6325967B8600BF657C /* BannerAdmob.swift */,
 				1E2300152597E3FB00B6B9C6 /* InterstitialAdmob.swift */,
+				1EC764C4259A815600802BC6 /* SpinnerProgressIndicator.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -546,6 +549,7 @@
 			files = (
 				1EEBE8682593FE0E009D8CC6 /* ProductivityCategoryData.swift in Sources */,
 				1EEBE8782593FF5D009D8CC6 /* RelationshipsCategoryData.swift in Sources */,
+				1EC764C5259A815600802BC6 /* SpinnerProgressIndicator.swift in Sources */,
 				1E9FB3892517DEB0002DFEB0 /* SizeShadowModifierImage.swift in Sources */,
 				1E9FB3742517D92F002DFEB0 /* VideoPlayer.swift in Sources */,
 				1ED35B692596A09100BF657C /* BannerAdmobSize.swift in Sources */,
