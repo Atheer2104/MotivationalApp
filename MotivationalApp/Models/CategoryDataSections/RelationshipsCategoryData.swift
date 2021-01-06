@@ -7,7 +7,7 @@
 
 import Foundation
 
-var RelationshipsCategoryData = [
+let RelationshipsCategoryData = [
     
     CategoryViewData(categoryTitleName: "Friendship", categoryImageName: "categoryImagePlaceholder3", youtubeSearchTerm: "Friendship Motivation"),
     CategoryViewData(categoryTitleName: "Friendship", categoryImageName: "categoryImagePlaceholder3", youtubeSearchTerm: "Friendship Motivation"),

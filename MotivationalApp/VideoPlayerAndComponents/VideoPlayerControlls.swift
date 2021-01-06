@@ -17,6 +17,7 @@ struct VideoPlayerControlls: View {
         HStack {
             
             Button(action: {
+
                 if counter != 0 || canSkip {
                     webView.playPreviousVideo()
                 }
@@ -25,6 +26,7 @@ struct VideoPlayerControlls: View {
                     .sizeShadowModifier(size: 44, shadowRadius: 10, shadowX: 4, shadowY: 5)
                     .padding()
             })
+            .buttonStyle(SkipButtonsStyle())
             
             Spacer()
             
@@ -36,6 +38,7 @@ struct VideoPlayerControlls: View {
                     .sizeShadowModifier(size: 88, shadowRadius: 10, shadowX: 4, shadowY: 5)
                     .animation(Animation.easeOut(duration: 0.5))
             })
+            .buttonStyle(playButtonStyle())
             
             Spacer()
             
@@ -46,9 +49,24 @@ struct VideoPlayerControlls: View {
                     .sizeShadowModifier(size: 44, shadowRadius: 10, shadowX: 4, shadowY: 5)
                     .padding()
             })
-            
+            .buttonStyle(SkipButtonsStyle())
         }
     }
 }
 
+struct SkipButtonsStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .foregroundColor(Color.white)
+            .scaleEffect(configuration.isPressed ? 1.1 : 1)
+    }
+}
+
+struct playButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .foregroundColor(Color.white)
+            .scaleEffect(configuration.isPressed ? 0.85 : 1)
+    }
+}
 

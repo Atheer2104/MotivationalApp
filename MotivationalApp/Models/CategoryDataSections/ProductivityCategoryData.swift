@@ -7,7 +7,7 @@
 
 import Foundation
 
-var ProductivityCategoryData = [
+let ProductivityCategoryData = [
     
     CategoryViewData(categoryTitleName: "Study", categoryImageName: "categoryImagePlaceholder", youtubeSearchTerm: "Study Motivation"),
     CategoryViewData(categoryTitleName: "Study", categoryImageName: "categoryImagePlaceholder", youtubeSearchTerm: "Study Motivation"),

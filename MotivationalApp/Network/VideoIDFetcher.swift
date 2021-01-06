@@ -40,6 +40,7 @@ class VideoIDFetcher {
     
     func fetchStart(search q: String) {
         self.videoIDFetcherInfo.searchTerm = q
+        self.videoIDFetcherInfo.counter = 0
         print("fetch start")
         
         guard let Url = URL(string: "https://www.googleapis.com/youtube/v3/search?part=id&maxResults=\(maxResults)&q=\(q.replacingOccurrences(of: " ", with: "%20"))&type=video&videoEmbeddable=true&key=\(apiKey)") else { return }

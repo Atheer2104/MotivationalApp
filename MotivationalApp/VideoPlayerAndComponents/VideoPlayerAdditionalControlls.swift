@@ -9,6 +9,7 @@ import SwiftUI
 
 struct VideoPlayerAdditionalControlls: View {
     @EnvironmentObject var categoryViewSettings: CategoryViewSettings
+    @State var isShowingSettingView: Bool = false
     
     var body: some View {
         
@@ -35,12 +36,14 @@ struct VideoPlayerAdditionalControlls: View {
             Spacer()
             
             Button(action: {
-                print("settings")
+                self.isShowingSettingView.toggle()
             }, label: {
                 Image("settings")
                     .sizeShadowModifier(size: 44, shadowRadius: 12, shadowX: 2, shadowY: 6)
             })
-            
+            .sheet(isPresented: $isShowingSettingView, content: {
+                SettingView()
+            })
         }
         .frame(width: 44, height: 160)
         .padding(.top, 50)

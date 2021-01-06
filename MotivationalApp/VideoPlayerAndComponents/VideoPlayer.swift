@@ -21,6 +21,7 @@ struct VideoPlayer: View {
     var webView = Webview(web: nil, videoID: "extilsa-8Ts")
     var videoIDFetcher = VideoIDFetcher()
     let randomInterstitalAds = RandomInterstitalAds()
+
     
     var body: some View {
         ZStack {
@@ -38,7 +39,6 @@ struct VideoPlayer: View {
                     self.timer.upstream.connect().cancel()
                 }
             }
-                
                 
             .onReceive(webViewModel.$dismissedInterstitialAd) { boolean in
                 if boolean {
@@ -130,40 +130,40 @@ struct VideoPlayer: View {
                     
                 }
             }
-                        
+            
+        
             if webViewModel.didFinishLoading {
                 VStack{
                     Spacer()
                     
-                    ZStack(alignment: .bottom) {
-                       VideoPlayerCoverUpYoutubeTrademarks(height: 100)
+                ZStack(alignment: .bottom) {
+                   VideoPlayerCoverUpYoutubeTrademarks(height: 100)
+                    
+                    VStack {
+                        VideoPlayerControlls(isPlaying: $isPlaying, canSkip: $canSkip, counter: videoIDFetcherInfo.counter, webView: webView)
                         
-                        VStack {
-                            VideoPlayerControlls(isPlaying: $isPlaying, canSkip: $canSkip, counter: videoIDFetcherInfo.counter, webView: webView)
-                            
-                            VideoProgressBar(seekValue: $seekValue, isSeeking: $isSeeking, webView: webView, webViewModel: webViewModel)
-                                .padding(.horizontal)
-                                .padding(.bottom)
-                        }
+                        VideoProgressBar(seekValue: $seekValue, isSeeking: $isSeeking, webView: webView, webViewModel: webViewModel)
+                            .padding(.horizontal)
+                            .padding(.bottom)
                     }
-                    .background(Color.black.opacity(0.25))
+                }
+                .background(Color.black.opacity(0.25))
 
                 }
                 // animation
                 .transition(.opacity)
-            } else {
-                SpinnerProgressIndicator()
-                    .frame(width: 100, height: 100, alignment: .center)
-                    //animation 
-                    .transition(.scale)
-            }
+                } else {
+                    SpinnerProgressIndicator()
+                        .frame(width: 100, height: 100, alignment: .center)
+                        //animation
+                        .transition(.scale)
+                }
 
             VStack {
                 VideoPlayerCoverUpYoutubeTrademarks(height: 40)
                 
                 Spacer()
             }
-            
         }
     }
 }
