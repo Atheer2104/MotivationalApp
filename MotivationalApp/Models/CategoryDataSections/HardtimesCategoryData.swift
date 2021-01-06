@@ -7,7 +7,7 @@
 
 import Foundation
 
-var HardtimesCategoryData = [
+let HardtimesCategoryData = [
     
     CategoryViewData(categoryTitleName: "Stress", categoryImageName: "categoryImagePlaceholder2", youtubeSearchTerm: "Stress Motivation"),
     CategoryViewData(categoryTitleName: "Stress", categoryImageName: "categoryImagePlaceholder2", youtubeSearchTerm: "Stress Motivation"),

@@ -8,7 +8,7 @@
 import Foundation
 
 class RandomInterstitalAds {
-    final private let TargetChance: Float = 1/5
+    final private let TargetChance: Float = 1/1000
     final private let range: ClosedRange<Float> = 0...1
     var previousIndex: Int = -1
     let interstitial: InterstitialAdmob

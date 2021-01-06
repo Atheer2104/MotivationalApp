@@ -15,7 +15,7 @@ struct CategoryViewSection: View {
         VStack(alignment: .leading) {
             Text(header)
                 .fontWeight(.bold)
-                .font(.title2)
+                .font(.title3)
                 .padding(.leading, 10)
 
             
@@ -23,12 +23,16 @@ struct CategoryViewSection: View {
                 VStack {
                     HStack() {
                         CategoryViewCardList(data: data, range: 0..<data.count/2)
+                        
+                        Spacer()
                     }
                     
                     .padding(.bottom, 6)
                     
                     HStack() {
                         CategoryViewCardList(data: data, range: data.count/2..<data.count)
+                        
+                        Spacer()
                     }
                 }
                 .padding(.leading, 8)
