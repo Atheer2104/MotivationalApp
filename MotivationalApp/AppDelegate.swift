@@ -7,6 +7,7 @@
 
 import UIKit
 import GoogleMobileAds
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

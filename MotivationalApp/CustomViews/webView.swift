@@ -14,7 +14,7 @@ struct Webview : UIViewRepresentable {
     @ObservedObject var webViewModel: WebViewModel = .shared
     var webview: WKWebView?
     var videoID: String
-    let hardcodedPlaylist: [String] = ["EQIh607kd0Y", "A5kGigZHed4", "MLJyFzdQfK8", "Trfxm0TJwuQ", "nVVr7gJNny8", "XqZsoesa55w"]
+    let hardcodedPlaylist: [String] = ["extilsa-8Ts" ,"EQIh607kd0Y", "A5kGigZHed4", "MLJyFzdQfK8", "Trfxm0TJwuQ", "nVVr7gJNny8", "XqZsoesa55w"]
     
     func createEmbededHtml(videoID: String, playlist: String) -> String {
             return """
@@ -27,8 +27,6 @@ struct Webview : UIViewRepresentable {
                     <body>
                       <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
                       <div id="player" ></div>
-
-
 
                       <script>
                         // 2. This code loads the IFrame Player API code asynchronously.
@@ -62,7 +60,9 @@ struct Webview : UIViewRepresentable {
 
                         // 4. The API will call this function when the video player is ready.
                         function onPlayerReady(event) {
-                           player.playVideoAt(1);
+                            player.playVideoAt(1);
+                            player.playVideo();
+                            
                         }
 
                       </script>
@@ -80,11 +80,11 @@ struct Webview : UIViewRepresentable {
     }
     
     func makeUIView(context: Context) -> WKWebView {
-        let embededHtmlString = createEmbededHtml(videoID: videoID, playlist: hardcodedPlaylist.joined(separator: ", "))
+        let embededHtmlString = createEmbededHtml(videoID: videoID, playlist: [""].joined(separator: ", "))
         self.webview?.navigationDelegate = context.coordinator
-        webview?.loadHTMLString(embededHtmlString, baseURL: nil)
         webview?.isUserInteractionEnabled = false
         webview?.isOpaque = false
+        webview?.loadHTMLString(embededHtmlString, baseURL: nil)
         return webview!
     }
     
@@ -102,7 +102,7 @@ struct Webview : UIViewRepresentable {
             print("webview has loaded")
             self.webViewModel.didFinishLoading = true
         }
-        
+    
     }
     
     func makeCoordinator() -> Webview.Coordinator {
@@ -171,6 +171,11 @@ struct Webview : UIViewRepresentable {
     }
     
     func reloadHtml(videoID: String, playlist: [String]) {
+        for videoid in playlist {
+            print(videoid)
+        }
+        
+        
         let embededHtmlString = createEmbededHtml(videoID: videoID, playlist: playlist.joined(separator: ", "))
         webview?.loadHTMLString(embededHtmlString, baseURL: nil)
         print("reloaded html")
@@ -180,8 +185,27 @@ struct Webview : UIViewRepresentable {
         webview?.evaluateJavaScript("player.playVideoAt(\(index))")
     }
     
-    func loadPlaylist(playlist: String, indexToPlay: Int) {
-        webview?.evaluateJavaScript("player.loadPlaylist('\(playlist)', \(indexToPlay))")
+    func loadPlaylist(playlist: [String], indexToPlay: Int) {
+        
+        var string = ""
+        for i in 0...playlist.count - 1 {
+            string += "'\(playlist[i])', "
+        }
+        
+        string += "'\(playlist.last!)' "
+        print(string)
+        
+        webview?.evaluateJavaScript("""
+                player.loadPlaylist({
+                    'playlist': [\(string)],
+                    'listType': 'playlist',
+                    'index': 1,
+                })
+            """)
+    }
+    
+    func reloadPage() {
+        webview?.reload()
     }
     
 

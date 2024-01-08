@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import CoreData
 
 struct VideoPlayer: View {
     
@@ -18,17 +19,50 @@ struct VideoPlayer: View {
     @State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @ObservedObject var webViewModel: WebViewModel = .shared
     @ObservedObject var videoIDFetcherInfo: VideoIDFetcherInfo = .shared
-    var webView = Webview(web: nil, videoID: "extilsa-8Ts")
+    @ObservedObject var videoSaved: VideoSaved = .shared
+    var webView = Webview(web: nil, videoID: "")
     var videoIDFetcher = VideoIDFetcher()
     let randomInterstitalAds = RandomInterstitalAds()
+    @FetchRequest(entity: Video.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Video.createdAt, ascending: true)])
+    var savedVideos: FetchedResults<Video>
 
     
     var body: some View {
         ZStack {
             webView
-               
+                
+            HStack {
+                VStack {
+                    Text("Start by choosing a category")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                
+                    HStack {
+                        Text("press")
+                            .fontWeight(.bold)
+                            .font(.subheadline)
+                            .foregroundColor(.white)
+                        
+                        Image("category")
+                            .resizable()
+                            .frame(width: 35, height: 35, alignment: .center)
+                        
+                        Text("located upwards to see the categories")
+                            .fontWeight(.bold)
+                            .font(.subheadline)
+                            .foregroundColor(.white)
+                        
+                    }
+                }
+            }
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+            .background(Color.black)
+            .opacity(videoIDFetcherInfo.hasChoosenCategory ? 0 : 1)
+            .animation(.easeInOut(duration: 1))
+           
+                
             .onChange(of: videoIDFetcherInfo.videoIDs) { videosIDs in
-                webView.loadPlaylist(playlist: videosIDs.joined(separator: ", "), indexToPlay: videoIDFetcherInfo.indexToPlay)
+                webView.loadPlaylist(playlist: videosIDs, indexToPlay: videoIDFetcherInfo.indexToPlay)
                 self.setDefaultValuesForFirstVideo = true
             }
                 
@@ -49,25 +83,45 @@ struct VideoPlayer: View {
                 
             .onReceive(webViewModel.$playlistIndex) {index in
                 randomInterstitalAds.randomlyShowAd(currentIndex: index)
+        
+                videoSaved.isVideoSaved = false
+                var currentVideoID: String = ""
                 
-                
-                if index == videoIDFetcher.maxResults + 1 {
-                    print("we should fetch next list")
-                    videoIDFetcher.fetchToken(nextToken: true)
+                if videoIDFetcherInfo.videoIDs.count == 1 {
+                    currentVideoID = ""
+                } else {
+                    currentVideoID = videoIDFetcherInfo.videoIDs[index]
                 }
                 
-                if index == 0 {
-                    print("we should fetch previous list")
-                    videoIDFetcher.fetchToken(nextToken: false)
+                for (_, savedVideo) in savedVideos.enumerated() {
                     
-                    // if some hwo by mistake we are on the first video and we don't have
-                    // a prevToken then we play the first video (IllegalState)
-                    if videoIDFetcherInfo.prevToken == "" {
-                        webView.playVideoAt(index: 1)
+                    guard let savedVideoID = savedVideo.videoID else { return }
+                    if savedVideoID == currentVideoID {
+                        videoSaved.isVideoSaved = true
                     }
-                    
                 }
                 
+                if !self.videoIDFetcherInfo.isPlayingSavedVideos {
+                    if index == videoIDFetcher.maxResults + 1 {
+                        print("we should fetch next list")
+                        videoIDFetcher.fetchToken(nextToken: true)
+                    }
+                }
+                
+                if !self.videoIDFetcherInfo.isPlayingSavedVideos {
+                    if index == 0 {
+                        print("we should fetch previous list")
+                        videoIDFetcher.fetchToken(nextToken: false)
+                        
+                        // if some hwo by mistake we are on the first video and we don't have
+                        // a prevToken then we play the first video (IllegalState)
+                        if videoIDFetcherInfo.prevToken == "" {
+                            webView.playVideoAt(index: 1)
+                        }
+                        
+                    }
+                }
+            
                 if index == 1 {
                     canSkip = false
                     webView.playVideo()
@@ -108,6 +162,8 @@ struct VideoPlayer: View {
                 // else duration will be 1.0 because when it's get called we are playing next video
                 // and we can't access any videoDuration so we get our default value which was for live videos
                 if state == 1 {
+                    webView.getVideoDuration()
+                    
                     if setDefaultValuesForFirstVideo {
                         seekValue = 0
                         webView.getVideoDuration()
