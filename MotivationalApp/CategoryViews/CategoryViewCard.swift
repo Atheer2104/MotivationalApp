@@ -44,8 +44,3 @@ struct CategoryViewCard: View {
     }
 }
 
-struct CategoryViewCard_Previews: PreviewProvider {
-    static var previews: some View {
-        CategoryViewCard(categoryTitleName: "Study", categoryImageName: "categoryImagePlaceholder")
-    }
-}

@@ -16,23 +16,62 @@ struct CategoryView: View {
             
             Divider()
                 .background(Color.primary)
+                .padding(.bottom)
+            
+            HStack {
+                Text("Categories")
+                    .fontWeight(.bold)
+                    .font(.title)
+                    .foregroundColor(.primary)
                 
+                Spacer()
+            }
+            .padding(.leading, 8)
+            .padding(.bottom)
+            
             ScrollView(.vertical, showsIndicators: false) {
-                VStack {
-                    CategoryViewSection(header: "Productivity", data: MotivationalSpeakersCategoryData)
-                        .padding(.top)
+                LazyVStack {
+                    Group {
+                        CategoryViewSection(header: "Motivational Speakers One", data: MotivationalSpeakersOne)
+                                .padding(.top)
+                       
+                        Spacer()
+                       
+                        CategoryViewSection(header: "Relationships", data: Relationships)
+                       
+                        Spacer()
+                       
+                        CategoryViewSection(header: "Mindset", data: Mindset)
+                        
+                        Spacer()
+                        
+                        CategoryViewSection(header: "Everyday Motivation", data: Everyday)
+                        
+                        Spacer()
+                        
+                        CategoryViewSection(header: "Female Motivation Speakers", data: FemaleMotivationSpeakers)
+                    }
                     
-                    Spacer()
                     
-                    CategoryViewSection(header: "Hard Times", data: Topics)
-                    
-                    Spacer()
-                    
-                    CategoryViewSection(header: "Relationships", data: MotivationFigures)
-                        .padding(.bottom)
-                    
-                    Spacer()
-                    
+                    Group {
+                        Spacer()
+                        
+                        CategoryViewSection(header: "Health", data: Health)
+                        
+                        Spacer()
+                        
+                        CategoryViewSection(header: "Figures 1", data: FiguresOne)
+
+                        
+                        Spacer()
+                        
+                        CategoryViewSection(header: "Figures 2", data: FiguresTwo)
+                       
+                       Spacer()
+                       
+                       CategoryViewSection(header: "Motivational Speakers 2", data: MotivationalSpeakersTwo)
+                           .padding(.bottom)
+                    }
                 }
             }
         }

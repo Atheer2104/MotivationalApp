@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftUI
+import CoreData
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -18,9 +19,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
         // Create the SwiftUI view that provides the window contents.
+        
+        let context = persistentContainer.viewContext
         let categoryViewSettings = CategoryViewSettings()
+        
         let contentView = ContentView()
             .environmentObject(categoryViewSettings)
+            .environment(\.managedObjectContext, context)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
@@ -29,6 +34,28 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             self.window = window
             window.makeKeyAndVisible()
         }
+    }
+    
+    lazy var persistentContainer: NSPersistentContainer = {
+      let container = NSPersistentContainer(name: "MotivationalApp")
+      container.loadPersistentStores { _, error in
+        if let error = error as NSError? {
+          fatalError("Unresolved error \(error), \(error.userInfo)")
+        }
+      }
+      return container
+    }()
+    
+    func saveContext() {
+      let context = persistentContainer.viewContext
+      if context.hasChanges {
+        do {
+          try context.save()
+        } catch {
+          let nserror = error as NSError
+          fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+      }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -57,6 +84,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
+        saveContext()
     }
 
 

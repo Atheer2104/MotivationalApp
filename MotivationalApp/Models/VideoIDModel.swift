@@ -7,8 +7,6 @@
 
 import Foundation
 
- 
-
 struct startFeed: Codable {
     let nextPageToken: String
     let regionCode: String
@@ -25,8 +23,22 @@ struct feed: Codable {
 struct items: Codable {
     let etag: String
     let id: id
+    let snippet: snippet
 }
 
 struct id: Codable {
     let videoId: String
+}
+
+struct snippet: Codable {
+    let title: String
+    let thumbnails: thumbnails
+}
+
+struct thumbnails: Codable {
+    let medium: medium
+}
+
+struct medium: Codable {
+    let url: String
 }

@@ -11,7 +11,8 @@ import SwiftUI
 class VideoIDFetcher {
  
     @ObservedObject var videoIDFetcherInfo: VideoIDFetcherInfo = .shared
-    private let apiKey: String = "AIzaSyBw4L0BJoyUIolpzXx9CsMp8ecIjAkjhVQ"
+    private let part: String = "snippet"
+    private let apiKey: String = "YOUTUBE API KEY"
     let maxResults: Int = 6
     let placeholderVideoID: String = "XqZsoesa55w"
     
@@ -23,6 +24,7 @@ class VideoIDFetcher {
                 guard let data = data else { return }
                 DispatchQueue.main.async {
                     completion(Result { try JSONDecoder().decode(T.self, from: data)})
+                   
                 }
             }
         }.resume()
@@ -34,7 +36,9 @@ class VideoIDFetcher {
         tempArr.append(placeholderVideoID)
         // placeholder value
         tempArr.insert(placeholderVideoID, at: 0)
+        self.videoIDFetcherInfo.hasChoosenCategory = true
         self.videoIDFetcherInfo.videoIDs = tempArr
+        
     }
     
     
@@ -43,7 +47,7 @@ class VideoIDFetcher {
         self.videoIDFetcherInfo.counter = 0
         print("fetch start")
         
-        guard let Url = URL(string: "https://www.googleapis.com/youtube/v3/search?part=id&maxResults=\(maxResults)&q=\(q.replacingOccurrences(of: " ", with: "%20"))&type=video&videoEmbeddable=true&key=\(apiKey)") else { return }
+        guard let Url = URL(string: "https://www.googleapis.com/youtube/v3/search?part=\(part)&maxResults=\(maxResults)&q=\(q.replacingOccurrences(of: " ", with: "%20"))&type=video&videoEmbeddable=true&key=\(apiKey)") else { return }
         
         fetch(Url: Url, modelType: startFeed.self) { result in
             switch result {
@@ -52,7 +56,10 @@ class VideoIDFetcher {
                 case .success(let result):
                     var tempArr: [String] = result.items.map({ $0.id.videoId })
                     self.videoIDFetcherInfo.nextToken = result.nextPageToken
+                    self.videoIDFetcherInfo.videoTitles = result.items.map({ $0.snippet.title })
+                    self.videoIDFetcherInfo.VideoThumbnailsUrl = result.items.map({ $0.snippet.thumbnails.medium.url })
                     self.handleData(tempArr: &tempArr)
+                    
             }
         }
     }
@@ -64,12 +71,12 @@ class VideoIDFetcher {
         if nextToken {
             self.videoIDFetcherInfo.counter += 1
             self.videoIDFetcherInfo.indexToPlay = 1
-            Url = URL(string: "https://www.googleapis.com/youtube/v3/search?part=id&pageToken=\(self.videoIDFetcherInfo.nextToken)&maxResults=\(maxResults)&q=\(self.videoIDFetcherInfo.searchTerm.replacingOccurrences(of: " ", with: "%20"))&type=video&videoEmbeddable=true&key=\(apiKey)")
+            Url = URL(string: "https://www.googleapis.com/youtube/v3/search?part=\(part)&pageToken=\(self.videoIDFetcherInfo.nextToken)&maxResults=\(maxResults)&q=\(self.videoIDFetcherInfo.searchTerm.replacingOccurrences(of: " ", with: "%20"))&type=video&videoEmbeddable=true&key=\(apiKey)")
             
         } else {
             self.videoIDFetcherInfo.counter -= 1
             self.videoIDFetcherInfo.indexToPlay = 6
-            Url = URL(string: "https://www.googleapis.com/youtube/v3/search?part=id&pageToken=\(self.videoIDFetcherInfo.prevToken)&maxResults=\(maxResults)&q=\(self.videoIDFetcherInfo.searchTerm.replacingOccurrences(of: " ", with: "%20"))&type=video&videoEmbeddable=true&key=\(apiKey)")
+            Url = URL(string: "https://www.googleapis.com/youtube/v3/search?part=\(part)&pageToken=\(self.videoIDFetcherInfo.prevToken)&maxResults=\(maxResults)&q=\(self.videoIDFetcherInfo.searchTerm.replacingOccurrences(of: " ", with: "%20"))&type=video&videoEmbeddable=true&key=\(apiKey)")
         }
         
         
@@ -84,12 +91,12 @@ class VideoIDFetcher {
                         var tempArr: [String] = result.items.map({ $0.id.videoId })
                         self.videoIDFetcherInfo.nextToken = result.nextPageToken
                         self.videoIDFetcherInfo.prevToken = result.prevPageToken
+                        self.videoIDFetcherInfo.videoTitles = result.items.map({ $0.snippet.title })
+                        self.videoIDFetcherInfo.VideoThumbnailsUrl = result.items.map({ $0.snippet.thumbnails.medium.url })
                         self.handleData(tempArr: &tempArr)
                 }
             }
         }
     }
     
-    
-
 }

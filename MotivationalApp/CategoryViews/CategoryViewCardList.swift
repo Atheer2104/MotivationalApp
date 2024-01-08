@@ -17,12 +17,16 @@ struct CategoryViewCardList: View {
     var body: some View {
         ForEach(range) { index in
             Button(action: {
-                categoryViewSettings.isShowingCategoryView.toggle()
+                categoryViewSettings.isShowingCategoryView = false
                 videoIDFetcher.fetchStart(search: "\(data[index].youtubeSearchTerm)")
-                videoIDFetcherInfo.fetchingNewCategory = true
+                videoIDFetcherInfo.isPlayingSavedVideos = false
+            
             }, label: {
                 CategoryViewCard(categoryTitleName: data[index].categoryTitleName, categoryImageName: data[index].categoryImageName)
             })
+            .buttonStyle(CategoryViewCardButtonStyle())
+            
+            
         }
     }
 }

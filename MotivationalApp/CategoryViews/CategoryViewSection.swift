@@ -17,11 +17,12 @@ struct CategoryViewSection: View {
                 .fontWeight(.bold)
                 .font(.title3)
                 .padding(.leading, 10)
+                .foregroundColor(.primary)
 
             
             ScrollView(.horizontal, showsIndicators: false) {
-                VStack {
-                    HStack() {
+                LazyVStack(alignment: .leading) {
+                    LazyHStack() {
                         CategoryViewCardList(data: data, range: 0..<data.count/2)
                         
                         Spacer()
@@ -29,7 +30,7 @@ struct CategoryViewSection: View {
                     
                     .padding(.bottom, 6)
                     
-                    HStack() {
+                    LazyHStack() {
                         CategoryViewCardList(data: data, range: data.count/2..<data.count)
                         
                         Spacer()
